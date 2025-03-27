@@ -1,5 +1,15 @@
 version: "1"
 rules:
-  - base: master
-    upstream: wei:master
-    mergeMethod: hardreset
+  - base: config          # Sync upstream AND work directly here
+    upstream: wei:master  # Pull updates from the original repo
+    mergeMethod: merge    # Merges upstream changes without overwriting your work
+    mergeUnstable: false  # Skip if mergeable_state isn’t clean
+    assignees:            # Assign conflicts to yourself (optional)
+      - wedontdozero
+    reviewers:            # Optional
+      - wedontdozero
+    conflictReviewers:    # Optional (for merge conflicts)
+      - wedontdozero
+
+label: ":arrow_heading_down: pull"
+conflictLabel: "merge-conflict"
